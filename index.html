@@ -1,107 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kaviya Krishnamoorthy — Portfolio</title>
+<title>Kaviya K — IT Graduate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F4F5F1;
+    --bg:#F7F7F4;
     --surface:#FFFFFF;
-    --line:#D9DDD6;
-    --text:#1B211E;
-    --muted:#666F69;
-    --accent:#1D6B5F;
-    --accent-dim:#BFDAD3;
-    --amber:#A6660F;
+    --line:#DDDFD8;
+    --text:#171B18;
+    --muted:#666E67;
+    --accent:#1E8E5A;
+    --accent-soft:#DCEEE3;
+    --tag-bg:#EFF1EB;
+  }
+  html[data-theme="dark"]{
+    --bg:#0D110F;
+    --surface:#141917;
+    --line:#26302B;
+    --text:#E7EBE6;
+    --muted:#8B9690;
+    --accent:#3FE08C;
+    --accent-soft:#173327;
+    --tag-bg:#1A211D;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter', sans-serif;
-    line-height:1.6;
-  }
-  h1,h2,h3{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+  body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.65; transition:background .25s, color .25s;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif; font-weight:600; letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  a{color:inherit;}
 
-  /* ---- Header / nav ---- */
-  header{
-    position:sticky; top:0; z-index:10;
-    background:rgba(244,245,241,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{display:flex; justify-content:space-between; align-items:center; padding:16px 28px; max-width:920px; margin:0 auto;}
-  nav .id{font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--accent);}
-  nav ul{list-style:none; display:flex; gap:24px;}
-  nav a{color:var(--muted); text-decoration:none; font-size:14px; transition:color .2s;}
+  header{position:sticky; top:0; z-index:20; background:var(--bg); border-bottom:1px solid var(--line);}
+  nav{display:flex; justify-content:space-between; align-items:center; padding:18px 24px; max-width:760px; margin:0 auto;}
+  nav .logo{font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:500;}
+  nav .logo .dot{color:var(--accent);}
+  nav ul{list-style:none; display:flex; gap:22px; align-items:center;}
+  nav a{text-decoration:none; color:var(--muted); font-size:14px;}
   nav a:hover{color:var(--text);}
+  #theme-toggle{border:1px solid var(--line); background:none; color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:12px; padding:5px 10px; cursor:pointer; border-radius:4px;}
+  #theme-toggle:hover{color:var(--text); border-color:var(--accent);}
 
-  /* ---- Hero ---- */
-  .hero{padding:96px 0 72px; border-bottom:1px solid var(--line);}
-  .status-line{
-    display:flex; align-items:center; gap:10px;
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--accent);
-    margin-bottom:28px;
-  }
-  .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite;}
-  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
-  .hero h1{font-size:clamp(32px,5vw,52px); line-height:1.15; max-width:14ch;}
-  .hero p{color:var(--muted); font-size:17px; max-width:52ch; margin-top:20px;}
-  .hero-meta{display:flex; gap:32px; margin-top:40px; flex-wrap:wrap;}
-  .hero-meta div{border-left:2px solid var(--accent-dim); padding-left:12px;}
-  .hero-meta .k{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted);}
-  .hero-meta .v{font-size:14px; margin-top:2px;}
+  .hero{padding:64px 0 40px;}
+  .prompt{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;}
+  .prompt::before{content:"$ "; color:var(--muted);}
+  .hero h1{font-size:clamp(28px,5vw,42px); margin-bottom:16px;}
+  .hero p{color:var(--muted); font-size:16px; max-width:56ch;}
+  .subline{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted); margin-top:22px; display:flex; gap:8px; flex-wrap:wrap;}
+  .subline b{color:var(--text); font-weight:500;}
 
-  /* ---- Section shared ---- */
-  section{padding:64px 0; border-bottom:1px solid var(--line);}
-  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:36px;}
-  .section-head .idx{font-family:'IBM Plex Mono', monospace; color:var(--accent-dim); font-size:14px;}
-  .section-head h2{font-size:24px;}
+  .marquee{border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; white-space:nowrap; padding:14px 0; background:var(--surface);}
+  .marquee-track{display:inline-block; animation:scroll 26s linear infinite; font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--muted);}
+  .marquee-track span{margin:0 18px;}
+  .marquee-track span.sep{color:var(--accent);}
+  @keyframes scroll{0%{transform:translateX(0);} 100%{transform:translateX(-50%);}}
 
-  /* ---- Projects as case files ---- */
-  .case{
-    border:1px solid var(--line);
-    background:var(--surface);
-    padding:28px;
-    margin-bottom:20px;
-  }
-  .case:last-child{margin-bottom:0;}
-  .case-top{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;}
-  .case h3{font-size:19px;}
-  .case .role{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--amber); margin-top:4px;}
-  .case ul{margin:16px 0 0 18px; color:var(--muted); font-size:14.5px;}
-  .case ul li{margin-bottom:6px;}
-  .stack{
-    margin-top:18px; padding-top:16px; border-top:1px dashed var(--line);
-    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent);
-    display:flex; flex-wrap:wrap; gap:8px 14px;
-  }
-  .case a{color:var(--text); font-size:13px; border:1px solid var(--line); padding:6px 12px; text-decoration:none; display:inline-block; margin-top:18px; transition:border-color .2s, color .2s;}
-  .case a:hover{border-color:var(--accent); color:var(--accent);}
+  section{padding:52px 0; border-bottom:1px solid var(--line);}
+  .section-head{display:flex; align-items:baseline; gap:10px; margin-bottom:28px;}
+  .section-head .tag{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent);}
+  .section-head h2{font-size:21px;}
 
-  /* ---- Skills ---- */
-  .skill-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
-  .skill-grid div{background:var(--bg); padding:16px; font-family:'IBM Plex Mono', monospace; font-size:13px;}
-  .skill-grid span{display:block; color:var(--muted); font-size:11px; margin-bottom:4px;}
+  .about p{color:var(--muted); font-size:15.5px; max-width:60ch;}
+  .about p + p{margin-top:14px;}
+  .about b{color:var(--text); font-weight:600;}
 
-  /* ---- Contact ---- */
-  .contact p{color:var(--muted); max-width:48ch;}
-  .contact-links{margin-top:24px; display:flex; flex-direction:column; gap:12px;}
-  .contact-links a{color:var(--text); text-decoration:none; font-size:15px; display:flex; align-items:baseline; gap:10px;}
-  .contact-links a .mono{color:var(--muted); font-size:12px; width:80px;}
-  .contact-links a:hover span:last-child{color:var(--accent);}
+  .item{padding:22px 0; border-top:1px solid var(--line);}
+  .item:first-child{border-top:none; padding-top:0;}
+  .item-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;}
+  .item-date{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);}
+  .item h3{font-size:17px; margin-top:4px;}
+  .item .org{font-size:13.5px; color:var(--muted); margin-top:2px;}
+  .item ul{margin:12px 0 0 18px; color:var(--muted); font-size:14.5px;}
+  .item ul li{margin-bottom:5px;}
+  .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;}
+  .tags span{background:var(--tag-bg); color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:11.5px; padding:4px 9px; border-radius:4px;}
+  .item a.link{display:inline-block; margin-top:14px; font-size:13px; font-family:'IBM Plex Mono',monospace; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent);}
 
-  footer{padding:28px 0; text-align:center; color:var(--muted); font-size:12px; font-family:'IBM Plex Mono', monospace;}
+  .cert-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;}
+  .cert-grid div{font-size:14px; color:var(--muted); padding:10px 0; border-top:1px dashed var(--line);}
+  .cert-grid div b{color:var(--text); font-weight:500; display:block; font-size:13px; margin-bottom:2px;}
 
-  @media(max-width:600px){
+  .contact p{color:var(--muted); max-width:52ch;}
+  .contact-list{margin-top:22px; display:flex; flex-direction:column; gap:2px;}
+  .contact-list a{display:flex; align-items:center; gap:14px; padding:13px 0; text-decoration:none; border-top:1px solid var(--line); font-size:15px; transition:padding-left .15s;}
+  .contact-list a:last-child{border-bottom:1px solid var(--line);}
+  .contact-list a:hover{padding-left:6px; color:var(--accent);}
+  .contact-list .mono{color:var(--muted); font-size:11.5px; width:64px; flex-shrink:0;}
+
+  footer{padding:26px 0; text-align:center; color:var(--muted); font-size:12px; font-family:'IBM Plex Mono',monospace;}
+
+  @media(max-width:560px){
+    .cert-grid{grid-template-columns:1fr;}
     nav ul{gap:14px;}
-    .hero{padding:72px 0 56px;}
   }
 </style>
 </head>
@@ -109,113 +103,151 @@
 
 <header>
   <nav>
-    <div class="id">KK_</div>
+    <div class="logo">Kaviya K</div>
     <ul>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#work">work</a></li>
+      <li><a href="#contact">contact</a></li>
+      <li><button id="theme-toggle" title="press D">◐</button></li>
     </ul>
   </nav>
 </header>
 
 <div class="wrap">
   <section class="hero">
-    <div class="status-line"><span class="dot"></span> IDENTITY VERIFIED — WELCOME</div>
-    <h1>Kaviya Krishnamoorthy</h1>
-    <p>IT graduate building AI-driven security and monitoring systems — from biometric authentication to computer-vision safety agents.</p>
-    <div class="hero-meta">
-      <div><div class="k">COLLEGE</div><div class="v">Manakula Vinayagar Institute of Technology, Puducherry</div></div>
-      <div><div class="k">FOCUS</div><div class="v">Python developer · AI/ML · Software Developer · Data Analyst </div></div>
-      <div><div class="k">LANGUAGES</div><div class="v">Tamil, English, German (A1)</div></div>
+    <div class="prompt">whoami</div>
+    <h1>Hi, I'm Kaviya.</h1>
+    <p>IT graduate working across <b>AI/ML</b>, computer vision, and IoT-driven security systems. Built a triple-layered biometric ATM authentication system, a road-accident risk model, and an agentic construction-safety platform through an Infosys Springboard virtual internship.</p>
+    <div class="subline">
+      <span><b>puducherry</b>, india</span>
+      <span>·</span>
+      <span>b.tech <b>information technology</b></span>
+      <span>·</span>
+      <span>cgpa <b>8.88</b></span>
     </div>
+  </section>
+</div>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Python</span><span class="sep">·</span><span>Flask</span><span class="sep">·</span><span>YOLOv8</span><span class="sep">·</span><span>OpenCV</span><span class="sep">·</span><span>MediaPipe</span><span class="sep">·</span><span>MySQL</span><span class="sep">·</span><span>SQLite</span><span class="sep">·</span><span>React</span><span class="sep">·</span><span>Tailwind</span><span class="sep">·</span><span>ESP32-CAM</span><span class="sep">·</span><span>Git</span><span class="sep">·</span>
+    <span>Python</span><span class="sep">·</span><span>Flask</span><span class="sep">·</span><span>YOLOv8</span><span class="sep">·</span><span>OpenCV</span><span class="sep">·</span><span>MediaPipe</span><span class="sep">·</span><span>MySQL</span><span class="sep">·</span><span>SQLite</span><span class="sep">·</span><span>React</span><span class="sep">·</span><span>Tailwind</span><span class="sep">·</span><span>ESP32-CAM</span><span class="sep">·</span><span>Git</span><span class="sep">·</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="about">
+    <div class="section-head"><span class="tag">01</span><h2>about</h2></div>
+    <p>Kaviya has a strong interest in <b>software development</b>, <b>cybersecurity</b>, <b>artificial intelligence</b>, <b>data visualization</b>, and <b>UI/UX design</b> — with project work spanning AI-based threat detection, accident blackspot detection, system monitoring, and data visualization.</p>
+    <p>Comfortable with <b>C</b>, <b>C++</b>, <b>Python</b>, <b>SQL</b>, and web technologies, backed by certifications and workshops in Generative AI, UI/UX Design, and Data Visualization.</p>
+    <p>A quick learner who enjoys solving problems, picking up new technologies, and working on practical projects — currently looking for opportunities to apply technical skills, gain industry experience, and grow as a technology professional.</p>
   </section>
 
   <section id="work">
-    <div class="section-head"><span class="idx">01</span><h2>Selected work</h2></div>
+    <div class="section-head"><span class="tag">02</span><h2>experience &amp; projects</h2></div>
 
-    <div class="case">
-      <div class="case-top">
+    <div class="item">
+      <div class="item-top">
         <div>
-          <h3>TriGuard — Triple-Layered Biometric ATM Authentication</h3>
-          <div class="role">Main Project - Team Leader</div>
+          <h3>Agentic AI for Safety Monitoring — BuildSure AI</h3>
+          <div class="org">Infosys Springboard Virtual Internship</div>
         </div>
+        <div class="item-date">Aug 23, 2026 – present</div>
       </div>
       <ul>
-        <li>Fingerprint (R307 sensor) + face recognition (YOLOv8, MediaPipe) + OTP as three independent auth layers</li>
-        <li>Encrypted credential storage with Fernet; OTP delivery via Gmail SMTP</li>
-        <li>Presented at Phase II Final Review; authored an IEEE-format journal paper</li>
+        <li>Built a multi-agent AI system for construction site risk monitoring — site risk detection, PPE/safety compliance, and regulatory compliance checks</li>
+        <li>Live webcam YOLOv8 detection pipeline with hazard scoring, PPE violation tracking, and automated email safety alerts</li>
+        <li>Flask REST API backend with SQLite, plus a React + Tailwind dashboard for real-time analytics and reporting</li>
       </ul>
-      <div class="stack">ESP32-CAM · YOLOv8 · MediaPipe · Flask · SQLite · Fernet</div>
+      <div class="tags"><span>Python</span><span>YOLOv8</span><span>OpenCV</span><span>Flask</span><span>SQLAlchemy</span><span>React</span><span>Recharts</span></div>
+      <a class="link" href="https://github.com/kaviyakrishnamoorthy17/Agentic-AI-for-Safety-Monitoring-with-Construction-Risk-Analytics" target="_blank" rel="noopener">view repository →</a>
     </div>
 
-    <div class="case">
-      <div class="case-top">
+    <div class="item">
+      <div class="item-top">
         <div>
-          <h3>BlackSpot Detection — Road Accident Zone Identification</h3>
-          <div class="role">Mini Project - Team Leader</div>
+          <h3>TriGuard ATM</h3>
+          <div class="org">Triple-layered biometric ATM authentication (IoT) · Team Lead</div>
         </div>
+        <div class="item-date">2025–26</div>
       </div>
       <ul>
-        <li>Identifies high-risk accident zones from historical road-incident data</li>
-        <li>Machine learning model trained to surface patterns for road-safety planning</li>
+        <li>Card-less ATM system with 3-layer authentication: account number, AI-based facial recognition, and IoT fingerprint verification</li>
+        <li>Real-time IoT admin alert system to flag anomalies and simulated unauthorized access</li>
+        <li>Authored an IEEE-format journal paper and presented at Phase II Final Review</li>
       </ul>
-      <div class="stack">Python · Machine Learning · MySQL</div>
+      <div class="tags"><span>Python</span><span>OpenCV</span><span>YOLO</span><span>MySQL</span><span>ESP32-CAM</span><span>IoT</span></div>
     </div>
 
-    <div class="case">
-      <div class="case-top">
+    <div class="item">
+      <div class="item-top">
         <div>
-          <h3>BuildSure AI — Agentic Construction Risk Intelligence Platform</h3>
-          <div class="role">Infosys Virtual Internship -  Individual Project</div>
+          <h3>BlackSpot Detection</h3>
+          <div class="org">Road accident zone identification system</div>
         </div>
+        <div class="item-date">2025</div>
       </div>
       <ul>
-        <li>Five coordinated agents — Site Risk, Safety, Compliance, Insurance, Reporting — under one Risk Intelligence Engine</li>
-        <li>Live webcam detection for overcrowding, restricted-zone entry, and PPE violations (custom-trained YOLOv8)</li>
-        <li>Flask + SQLite backend; React/Tailwind/Recharts dashboard; automated high-severity email alerts</li>
+        <li>Identifies and ranks accident-prone zones using historical and geospatial data</li>
+        <li>Applied statistical analysis to support traffic-safety decisions</li>
       </ul>
-      <div class="stack">YOLOv8 · OpenCV · Flask · SQLAlchemy · React · Recharts</div>
-      <a href="https://github.com/kaviyakrishnamoorthy17/Agentic-AI-for-Safety-Monitoring-with-Construction-Risk-Analytics" target="_blank" rel="noopener">View repository ↗</a>
+      <div class="tags"><span>Python</span><span>MySQL</span><span>React Native</span></div>
     </div>
-  </section>
 
-  <section id="skills">
-    <div class="section-head"><span class="idx">02</span><h2>Skills</h2></div>
-    <div class="skill-grid">
-      <div><span>Languages</span>Python,Java</div>
-      <div><span>Backend</span>Flask</div>
-      <div><span>Databases</span>MySQL · SQLite</div>
-      <div><span>ML / CV</span>YOLOv8 · MediaPipe</div>
-      <div><span>Frontend</span>React · Tailwind</div>
-      <div><span>Spoken</span>German (A1)</div>
+    <div class="item">
+      <div class="item-top">
+        <div>
+          <h3>Web Development Intern</h3>
+          <div class="org">Cherri Technology</div>
+        </div>
+        <div class="item-date">2024</div>
+      </div>
+      <ul>
+        <li>Hands-on experience building and designing websites</li>
+      </ul>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
     </div>
   </section>
 
   <section id="certs">
-    <div class="section-head"><span class="idx">03</span><h2>Certifications &amp; achievements</h2></div>
-    <div class="skill-grid">
-      <div><span>Certification</span>NPTEL – DBMS (IIT-backed)</div>
-      <div><span>Certification</span>TCS iON Career Edge – Young Professional</div>
-      <div><span>Workshop</span>UI/UX – VEI Technologies</div>
-      <div><span>Workshop</span>Front-End – DATANERDZ.AI (Qualified: Front End Fusion Fest)</div>
-      <div><span>Contest</span>Innovators Day 2024 (National-level)</div>
-      <div><span>Contest</span>CASTILO (Captcha 25) – MVIT, via Unstop</div>
-      <div><span>Conference</span>TECHFEST 2025 – Puducherry Technological University</div>
+    <div class="section-head"><span class="tag">03</span><h2>certifications &amp; achievements</h2></div>
+    <div class="cert-grid">
+      <div><b>NPTEL – DBMS</b>IIT-backed certification</div>
+      <div><b>TCS iON Career Edge</b>Young Professional</div>
+      <div><b>UI/UX Workshop</b>VEI Technologies</div>
+      <div><b>Front-End Workshop</b>DATANERDZ.AI — Qualified: Front End Fusion Fest</div>
+      <div><b>Innovators Day 2024</b>National-level project contest</div>
+      <div><b>CASTILO (Captcha 25)</b>MVIT, via Unstop</div>
+      <div><b>TECHFEST 2025</b>Puducherry Technological University</div>
     </div>
   </section>
 
   <section id="contact">
-    <div class="section-head"><span class="idx">04</span><h2>Contact</h2></div>
+    <div class="section-head"><span class="tag">04</span><h2>contact</h2></div>
     <p>Open to opportunities in AI/ML engineering, security systems, and full-stack development.</p>
-    <div class="contact-links">
-      <a href="https://github.com/kaviyakrishnamoorthy17" target="_blank" rel="noopener"><span class="mono">GITHUB</span><span>github.com/kaviyakrishnamoorthy17</span></a>
-      <a href="https://www.linkedin.com/in/kaviya-k-0031722b1" target="_blank" rel="noopener"><span class="mono">LINKEDIN</span><span>linkedin.com/in/kaviya-k-0031722b1</span></a>
-      <a href="mailto:kaviya8510@gmail.com"><span class="mono">EMAIL</span><span>kaviya8510@gmail.com</span></a>
+    <div class="contact-list">
+      <a href="mailto:kaviya8510@gmail.com"><span class="mono">email</span><span>kaviya8510@gmail.com</span></a>
+      <a href="https://github.com/kaviyakrishnamoorthy17" target="_blank" rel="noopener"><span class="mono">github</span><span>@kaviyakrishnamoorthy17</span></a>
+      <a href="https://www.linkedin.com/in/kaviya-k-0031722b1" target="_blank" rel="noopener"><span class="mono">linkedin</span><span>in/kaviya-k-0031722b1</span></a>
     </div>
   </section>
 
-  <footer>© 2026 Kaviya Krishnamoorthy — built &amp; deployed via Vercel</footer>
+  <footer>© 2026 Kaviya K · press <span class="mono">D</span> for dark mode</footer>
 </div>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  function setTheme(t){ root.setAttribute('data-theme', t); }
+  function currentTheme(){ return root.getAttribute('data-theme'); }
+  toggle.addEventListener('click', () => {
+    setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+  });
+  window.addEventListener('keydown', (e) => {
+    if(e.key === 'd' || e.key === 'D'){
+      setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+    }
+  });
+</script>
 
 </body>
 </html>
